@@ -1,0 +1,12 @@
+# robots.txt – TeutoPlus Bautrocknung OWL GmbH
+# TODO: Domain durch echte URL ersetzen
+
+User-agent: *
+Allow: /
+
+# Rechtliche Seiten von Indexierung ausschließen
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+
+# Sitemap
+Sitemap: https://www.beispiel-domain.de/sitemap.xml
