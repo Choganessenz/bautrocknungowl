@@ -2116,25 +2116,36 @@ details[open] .faq-chevron { transform: rotate(180deg); }
    ========================================================================== */
 .cookie-banner {
   position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--space-5) 0;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  left: var(--space-6);
+  max-width: 420px;
+  margin-left: auto;
+  background: var(--color-white);
+  color: var(--color-text);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
   z-index: 9999;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-  animation: slideUp 0.4s ease;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+  animation: cookieSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+@keyframes cookieSlideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .cookie-banner__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
+}
+
+.cookie-banner__icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: var(--space-1);
 }
 
 .cookie-banner__text {
@@ -2145,65 +2156,85 @@ details[open] .faq-chevron { transform: rotate(180deg); }
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-2);
   font-size: var(--font-size-base);
+  color: var(--color-primary);
 }
 
 .cookie-banner__desc {
   font-size: var(--font-size-sm);
-  color: rgba(255,255,255,0.8);
+  color: var(--color-text-muted);
   line-height: var(--line-height-normal);
 }
 
 .cookie-banner__desc a {
-  color: rgba(255,255,255,0.9);
+  color: var(--color-accent);
   text-decoration: underline;
+}
+
+.cookie-banner__desc a:hover {
+  color: var(--color-primary);
 }
 
 .cookie-banner__actions {
   display: flex;
-  gap: var(--space-3);
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .cookie-banner__btn-accept {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: var(--color-white);
-  padding: var(--space-3) var(--space-6);
+  padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-md);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-sm);
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-primary);
   cursor: pointer;
   min-height: 44px;
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
   white-space: nowrap;
+  width: 100%;
 }
 
-.cookie-banner__btn-accept:hover { background-color: #1D4ED8; border-color: #1D4ED8; }
+.cookie-banner__btn-accept:hover {
+  background-color: var(--color-primary-dark, #111f4d);
+  border-color: var(--color-primary-dark, #111f4d);
+  transform: translateY(-1px);
+}
 
 .cookie-banner__btn-decline {
   background-color: transparent;
-  color: rgba(255,255,255,0.85);
-  padding: var(--space-3) var(--space-6);
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-md);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid var(--color-border, #e2e8f0);
   cursor: pointer;
   min-height: 44px;
-  transition: border-color var(--transition-fast), color var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast);
   white-space: nowrap;
+  width: 100%;
 }
 
-.cookie-banner__btn-decline:hover { border-color: rgba(255,255,255,0.7); color: var(--color-white); }
+.cookie-banner__btn-decline:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+  background-color: var(--color-gray-50, #f8fafc);
+}
 
 
 /* ==========================================================================
    26. Responsive – Tablet (640px)
    ========================================================================== */
 @media (min-width: 640px) {
-  .cookie-banner__inner {
+  .cookie-banner__actions {
     flex-direction: row;
-    align-items: center;
+  }
+
+  .cookie-banner__btn-accept,
+  .cookie-banner__btn-decline {
+    width: auto;
+    flex: 1;
   }
 
   .rental-terms-grid { grid-template-columns: repeat(2, 1fr); }
