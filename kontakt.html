@@ -9,6 +9,18 @@
   <title>Kontakt | Bautrocknung Paderborn GmbH | Paderborn</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <!-- SEO -->
+  <link rel="canonical" href="https://www.bautrocknung-paderborn.de/kontakt">
+  <meta property="og:title" content="Kontakt | Bautrocknung Paderborn GmbH | Paderborn">
+  <meta property="og:description" content="Kontaktieren Sie Bautrocknung Paderborn GmbH in Paderborn. Telefon, Kontaktformular und Adresse – wir helfen schnell und zuverlässig.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bautrocknung-paderborn.de/kontakt">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Bautrocknung Paderborn GmbH">
+  <meta property="og:image" content="https://www.bautrocknung-paderborn.de/assets/images/Logo_Bautrocknung.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kontakt | Bautrocknung Paderborn GmbH | Paderborn">
+  <meta name="twitter:description" content="Kontaktieren Sie Bautrocknung Paderborn GmbH in Paderborn. Telefon, Kontaktformular und Adresse – wir helfen schnell und zuverlässig.">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
@@ -65,9 +77,8 @@
 
         <!-- Form -->
         <div>
-          <h2 id="contact-heading" class="mb-6">Nachricht senden</h2>
-          <!-- TODO: action-Attribut mit Backend-URL erg&auml;nzen oder fetch()-Call in main.js einbinden -->
           <form class="contact-form" id="contact-form" method="POST" action="mailto:kontakt@bautrocknung-owl.com" enctype="text/plain" novalidate>
+            <h2 id="contact-heading" class="mb-6">Nachricht senden</h2>
 
             <div class="grid--2" style="gap:var(--space-4);">
               <div class="form-group">
@@ -205,6 +216,21 @@
 
 <div class="cookie-banner" id="cookie-banner" hidden role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc"><div class="container"><div class="cookie-banner__inner"><div class="cookie-banner__text"><p class="cookie-banner__title" id="cookie-title">Datenschutz-Einstellungen</p><p class="cookie-banner__desc" id="cookie-desc">Wir verwenden ausschlie&szlig;lich technisch notwendige Cookies. Weitere Informationen in unserer <a href="datenschutz.html">Datenschutzerkl&auml;rung</a>.</p></div><div class="cookie-banner__actions"><button class="cookie-banner__btn-decline" id="cookie-decline" type="button">Nur notwendige</button><button class="cookie-banner__btn-accept" id="cookie-accept" type="button">Verstanden</button></div></div></div></div>
 
+<!-- ================================================================
+     EmailJS – E-Mail-Versand direkt aus dem Browser (kein Backend nötig)
+     Anleitung: https://www.emailjs.com/docs/
+     1. Konto anlegen auf emailjs.com
+     2. E-Mail-Service verbinden (z. B. Gmail, SMTP) → Service ID notieren
+     3. E-Mail-Template erstellen → Template ID notieren
+     4. Public Key kopieren (Account → API Keys)
+     5. Die drei Werte unten eintragen
+     ================================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ▼▼▼ HIER EINTRAGEN – EmailJS Public Key (Account → API Keys) ▼▼▼
+  emailjs.init('DEIN_PUBLIC_KEY_HIER_EINTRAGEN');
+  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+</script>
 <script src="js/main.js"></script>
 <script>var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();</script>
 </body>

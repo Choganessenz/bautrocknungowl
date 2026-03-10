@@ -287,33 +287,56 @@
         return;
       }
 
-      // Form is valid – show success message
-      // TODO: Replace with fetch() call to your backend endpoint:
-      // fetch('/api/contact', { method: 'POST', body: new FormData(form) })
-      //   .then(r => r.json()).then(d => { ... })
-      //   .catch(() => { ... });
+      // ── EmailJS Konfiguration ─────────────────────────────────────────────
+      // ▼▼▼ HIER EINTRAGEN ▼▼▼
+      var EMAILJS_SERVICE_ID  = 'DEIN_SERVICE_ID_HIER_EINTRAGEN';   // EmailJS → Email Services → Service ID
+      var EMAILJS_TEMPLATE_ID = 'DEIN_TEMPLATE_ID_HIER_EINTRAGEN';  // EmailJS → Email Templates → Template ID
+      // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+      // ─────────────────────────────────────────────────────────────────────
 
-      if (statusEl) {
-        statusEl.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns so schnell wie möglich bei Ihnen.';
-        statusEl.className = 'form-status form-status--success is-visible';
-        // Add icon
-        var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        icon.setAttribute('width', '20'); icon.setAttribute('height', '20');
-        icon.setAttribute('viewBox', '0 0 24 24');
-        icon.setAttribute('fill', 'none');
-        icon.setAttribute('stroke', 'currentColor');
-        icon.setAttribute('stroke-width', '2');
-        icon.setAttribute('stroke-linecap', 'round');
-        icon.setAttribute('stroke-linejoin', 'round');
-        icon.innerHTML = '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>';
-        statusEl.insertBefore(icon, statusEl.firstChild);
+      // Submit-Button in Ladezustand versetzen
+      var submitBtn = form.querySelector('[type="submit"]');
+      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true" style="animation:spin 1s linear infinite"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg> Wird gesendet\u2026';
       }
+      if (statusEl) { statusEl.className = 'form-status'; statusEl.textContent = ''; }
 
-      form.reset();
-      Object.keys(rules).forEach(function (id) {
-        var field = document.getElementById(id);
-        if (field) { field.classList.remove('is-valid', 'is-invalid'); }
-      });
+      // E-Mail via EmailJS absenden
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+        .then(function () {
+          // Erfolgsmeldung
+          if (statusEl) {
+            statusEl.className = 'form-status form-status--success is-visible';
+            var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            icon.setAttribute('width', '20'); icon.setAttribute('height', '20');
+            icon.setAttribute('viewBox', '0 0 24 24');
+            icon.setAttribute('fill', 'none');
+            icon.setAttribute('stroke', 'currentColor');
+            icon.setAttribute('stroke-width', '2');
+            icon.setAttribute('stroke-linecap', 'round');
+            icon.setAttribute('stroke-linejoin', 'round');
+            icon.innerHTML = '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>';
+            statusEl.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns so schnell wie m\u00f6glich bei Ihnen.';
+            statusEl.insertBefore(icon, statusEl.firstChild);
+          }
+          form.reset();
+          Object.keys(rules).forEach(function (id) {
+            var field = document.getElementById(id);
+            if (field) { field.classList.remove('is-valid', 'is-invalid'); }
+          });
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
+        })
+        .catch(function (error) {
+          // Fehlermeldung
+          if (statusEl) {
+            statusEl.className = 'form-status form-status--error is-visible';
+            statusEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an: 05231 9883005';
+          }
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
+          console.error('EmailJS Fehler:', error);
+        });
     });
   }
 
