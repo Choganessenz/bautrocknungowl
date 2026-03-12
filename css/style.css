@@ -1985,17 +1985,17 @@ details[open] .faq-chevron { transform: rotate(180deg); }
 .equipment-spec {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   font-size: var(--font-size-sm);
   padding: var(--space-2) 0;
   border-bottom: 1px solid var(--color-gray-border);
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .equipment-spec:last-child { border-bottom: none; }
 
-.equipment-spec__label { color: var(--color-gray); }
-.equipment-spec__value { font-weight: var(--font-weight-medium); color: var(--color-text); }
+.equipment-spec__label { color: var(--color-gray); flex: 0 0 45%; }
+.equipment-spec__value { font-weight: var(--font-weight-medium); color: var(--color-text); text-align: right; flex: 1 1 auto; }
 
 .equipment-card__price {
   display: inline-flex;
