@@ -893,8 +893,9 @@ strong { font-weight: var(--font-weight-semibold); }
   display: flex;
   align-items: center;
   position: relative;
-  /* TODO: Hintergrundbild einbinden → background-image: url('assets/images/hero-bg.jpg') center / cover no-repeat */
-  background: linear-gradient(135deg, #1B2B5E 0%, #1e3a8a 50%, #2563EB 100%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%),
+              linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('../assets/images/Hero.JPG') center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -1006,6 +1007,32 @@ strong { font-weight: var(--font-weight-semibold); }
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(37,99,235,0.15));
   pointer-events: none;
+}
+
+.hero-inner--wasserschaden {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%),
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url('../assets/images/Wasserschaden.jpg') center / cover no-repeat;
+}
+.hero-inner--bautrocknung {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%),
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url('../assets/images/Bautrocknung.JPG') center / cover no-repeat;
+}
+.hero-inner--leckageortung {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%),
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url('../assets/images/Leckageortung2.jpg') center / cover no-repeat;
+}
+.hero-inner--vermietung {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%),
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url('../assets/images/Geraetevermietung2.JPG') center / cover no-repeat;
+}
+.hero-inner--schadstoffsanierung {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.65) 100%),
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url('../assets/images/Schadstoffe.JPG') center / cover no-repeat;
 }
 
 .hero-inner__content {
@@ -1204,11 +1231,11 @@ strong { font-weight: var(--font-weight-semibold); }
 }
 
 /* Placeholder-Farbverläufe bis echte Bilder da sind */
-.service-slide--1 { background: linear-gradient(145deg, #0a1628 0%, #1B2B5E 55%, #1e4080 100%); }
-.service-slide--2 { background: linear-gradient(145deg, #0c1c38 0%, #1a3570 55%, #2563EB 100%); }
-.service-slide--3 { background: linear-gradient(145deg, #071220 0%, #122450 55%, #1B2B5E 100%); }
-.service-slide--4 { background: linear-gradient(145deg, #0e1a30 0%, #1B2B5E 45%, #3A7EC6 100%); }
-.service-slide--5 { background: linear-gradient(145deg, #08112a 0%, #1B2B5E 55%, #1d4ed8 100%); }
+.service-slide--1 { background: url('../assets/images/Wasserschaden.jpg') center / cover no-repeat; }
+.service-slide--2 { background: url('../assets/images/Bautrocknung.JPG') center / cover no-repeat; }
+.service-slide--3 { background: url('../assets/images/Leckageortung.jpg') center / cover no-repeat; }
+.service-slide--4 { background: url('../assets/images/Geraetevermietung.jpg') center / cover no-repeat; }
+.service-slide--5 { background: url('../assets/images/Schadstoffe.JPG') center / cover no-repeat; }
 
 .service-slide__overlay {
   position: absolute;
@@ -1441,6 +1468,7 @@ strong { font-weight: var(--font-weight-semibold); }
   font-size: var(--font-size-sm);
   text-align: center;
   padding: var(--space-8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
 
