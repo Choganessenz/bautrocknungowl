@@ -382,11 +382,17 @@
       slides.forEach(function (slide, i) {
         var slot = ((i - current) % N + N) % N;
         var s    = slotFor(slot, slideW);
+        if (animated) slide.style.willChange = 'transform, opacity';
         slide.style.transition    = trans;
         slide.style.transform     = 'perspective(1200px) translateX(' + s.tx + 'px) translateZ(' + s.tz + 'px) rotateY(' + s.ry + 'deg) scale(' + s.sc + ')';
         slide.style.opacity       = s.op;
         slide.style.zIndex        = s.zi;
         slide.style.pointerEvents = s.pe;
+        if (animated) {
+          (function (sl) {
+            setTimeout(function () { sl.style.willChange = ''; }, 800);
+          }(slide));
+        }
       });
     }
 
@@ -399,6 +405,7 @@
     }
 
     function goTo(idx, animated) {
+      clearTimeout(resizeTimer); // Verhindert dass resize die Animation überschreibt
       current = ((idx % N) + N) % N;
       applySlots(animated !== false);
       updateDots();
@@ -420,21 +427,38 @@
       });
     });
 
-    // Touch / Swipe
-    var touchX = 0;
+    // Touch / Swipe – mit Richtungsfilter (kein Scroll-Konflikt)
+    var touchX = 0, touchY = 0, touchLocked = null, touchBlocked = false;
     carousel.addEventListener('touchstart', function (e) {
       touchX = e.changedTouches[0].clientX;
+      touchY = e.changedTouches[0].clientY;
+      touchLocked = null;
+      touchBlocked = false;
     }, { passive: true });
+    carousel.addEventListener('touchmove', function (e) {
+      if (touchBlocked) return;
+      if (touchLocked === null) {
+        var dx = Math.abs(e.changedTouches[0].clientX - touchX);
+        var dy = Math.abs(e.changedTouches[0].clientY - touchY);
+        // Mindestbewegung abwarten bevor Richtung festgelegt wird
+        if (dx < 6 && dy < 6) return;
+        touchLocked = dx > dy ? 'h' : 'v';
+        if (touchLocked === 'v') touchBlocked = true;
+      }
+      if (touchLocked === 'h') e.preventDefault();
+    }, { passive: false });
     carousel.addEventListener('touchend', function (e) {
+      if (touchLocked !== 'h') return;
       var diff = touchX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetTimer(); }
     }, { passive: true });
 
-    // Recalculate on resize
+    // Recalculate on resize – langer Debounce damit Adressleisten-Events (iOS/Android)
+    // nicht mit laufenden Animationen kollidieren
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () { applySlots(false); }, 150);
+      resizeTimer = setTimeout(function () { applySlots(false); }, 400);
     });
 
     // Init

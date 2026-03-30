@@ -880,6 +880,31 @@ strong { font-weight: var(--font-weight-semibold); }
 
 .footer-bottom__link:hover { color: var(--color-primary); }
 
+.footer-bottom__credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-gray);
+}
+
+.footer-bottom__credit img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+.footer-bottom__credit a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-bottom__credit a:hover { color: var(--color-primary); }
+
 
 /* ==========================================================================
    12. Hero – Startseite
@@ -1193,6 +1218,7 @@ strong { font-weight: var(--font-weight-semibold); }
   position: relative;
   height: 460px;
   overflow: visible; /* section clips; side cards peek in */
+  contain: layout style;
 }
 
 /* Ring: centered reference point – JS transforms each slide from here */
@@ -1211,7 +1237,7 @@ strong { font-weight: var(--font-weight-semibold); }
   inset: 0;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  will-change: transform, opacity;
+  /* will-change wird nur per JS während der Animation gesetzt */
 }
 
 /* Service slide inner */
@@ -1325,9 +1351,9 @@ strong { font-weight: var(--font-weight-semibold); }
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Buttons knapp außerhalb der Karte (320px breit → ±160px vom Zentrum) */
-.carousel__btn--prev { left: calc(50% - 160px - 64px); }
-.carousel__btn--next { right: calc(50% - 160px - 64px); }
+/* Buttons: auf kleinen Screens innerhalb der Karte, sichtbar am Rand */
+.carousel__btn--prev { left: 12px; }
+.carousel__btn--next { right: 12px; }
 
 /* Punkte-Navigation */
 .carousel__dots {
