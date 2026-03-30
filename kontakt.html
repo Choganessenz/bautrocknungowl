@@ -106,11 +106,26 @@
                   <option value="wasserschaden">Wasserschaden / Notfall</option>
                   <option value="bautrocknung">Bautrocknung &amp; Sanierung</option>
                   <option value="leckageortung">Leckageortung</option>
+                  <option value="schadstoffsanierung">Schadstoffsanierung</option>
                   <option value="vermietung">Ger&auml;tevermietung</option>
                   <option value="angebot">Angebotsanfrage</option>
                   <option value="sonstiges">Sonstiges</option>
                 </select>
                 <span class="form-error" id="contact-subject-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Gerätewahl – wird nur bei Gerätevermietung angezeigt -->
+              <div class="form-group" id="geraet-group" hidden>
+                <label class="form-label" for="contact-geraet">Gew&uuml;nschtes Ger&auml;t</label>
+                <select class="form-select" id="contact-geraet" name="geraet">
+                  <option value="">Bitte w&auml;hlen...</option>
+                  <option value="ttk-75-e">Trotec TTK 75 E &ndash; Kompakter Bautrockner</option>
+                  <option value="ttk-105-s">Trotec TTK 105 S &ndash; Leistungsstarker Bautrockner</option>
+                  <option value="ttk-170-s">Trotec TTK 170 S &ndash; Profi-Bautrockner</option>
+                  <option value="ttk-355-s">Trotec TTK 355 S &ndash; Hochleistungs-Bautrockner</option>
+                  <option value="fixtron">Fixtron &ndash; D&auml;mmschichttrocknung</option>
+                  <option value="qube-plus">Qube+ &ndash; Technische Trocknung</option>
+                </select>
               </div>
             </div>
 

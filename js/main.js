@@ -548,6 +548,40 @@
 
 
   /* =========================================================================
+     11. initContactPreselect – Dropdown per URL-Parameter vorauswählen
+     ========================================================================= */
+  function initContactPreselect() {
+    var subject = $$('#contact-subject')[0];
+    var geraetGroup = $$('#geraet-group')[0];
+    var geraetSelect = $$('#contact-geraet')[0];
+    if (!subject) return;
+
+    function toggleGeraet() {
+      if (subject.value === 'vermietung') {
+        geraetGroup.removeAttribute('hidden');
+      } else {
+        geraetGroup.setAttribute('hidden', '');
+        if (geraetSelect) geraetSelect.value = '';
+      }
+    }
+
+    subject.addEventListener('change', toggleGeraet);
+
+    var params = new URLSearchParams(window.location.search);
+    var leistung = params.get('leistung');
+    var geraet = params.get('geraet');
+
+    if (leistung) {
+      subject.value = leistung;
+      toggleGeraet();
+    }
+    if (geraet && geraetSelect) {
+      geraetSelect.value = geraet;
+    }
+  }
+
+
+  /* =========================================================================
      Init all on DOMContentLoaded
      ========================================================================= */
   document.addEventListener('DOMContentLoaded', function () {
@@ -557,6 +591,7 @@
     initScrollHeader();
     initCookieBanner();
     initContactForm();
+    initContactPreselect();
     initServicesCarousel();
     initGoogleRating();
     initAnchorScroll();
