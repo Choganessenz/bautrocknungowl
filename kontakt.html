@@ -77,7 +77,9 @@
 
         <!-- Form -->
         <div>
-          <form class="contact-form" id="contact-form" method="POST" action="mailto:schaden@teutoplus.de" enctype="text/plain" novalidate>
+          <form class="contact-form" id="contact-form" novalidate>
+            <!-- Honeypot: Bots füllen dieses Feld aus – Humans sehen es nicht -->
+            <div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;"><label for="website">Website (nicht ausfüllen)</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
             <h2 id="contact-heading" class="mb-6">Nachricht senden</h2>
 
             <div class="grid--2" style="gap:var(--space-4);">
@@ -119,12 +121,12 @@
                 <label class="form-label" for="contact-geraet">Gew&uuml;nschtes Ger&auml;t</label>
                 <select class="form-select" id="contact-geraet" name="geraet">
                   <option value="">Bitte w&auml;hlen...</option>
-                  <option value="ttk-75-e">Trotec TTK 75 E &ndash; Kompakter Bautrockner</option>
+                  <option value="ttk-75-eco">Trotec TTK 75 Eco &ndash; Kompakter Bautrockner</option>
                   <option value="ttk-105-s">Trotec TTK 105 S &ndash; Leistungsstarker Bautrockner</option>
                   <option value="ttk-170-s">Trotec TTK 170 S &ndash; Profi-Bautrockner</option>
                   <option value="ttk-355-s">Trotec TTK 355 S &ndash; Hochleistungs-Bautrockner</option>
-                  <option value="fixtron">Fixtron &ndash; D&auml;mmschichttrocknung</option>
-                  <option value="qube-plus">Qube+ &ndash; Technische Trocknung</option>
+                  <option value="fixtron-dv-50">Fixtron DV 50 &ndash; D&auml;mmschichttrocknung</option>
+                  <option value="qube-plus">Trotec Qube+ &ndash; Technische Trocknung</option>
                 </select>
               </div>
             </div>
@@ -185,8 +187,8 @@
               <div>
                 <div class="contact-info-item__label">Adresse</div>
                 <div class="contact-info-item__value">
-                  Stettiner Str. 1<br>
-                  32756 Detmold
+                  Milanweg 15<br>
+                  33100 Paderborn
                 </div>
               </div>
             </div>
@@ -223,7 +225,7 @@
   <div class="footer-main"><div class="container"><div class="footer-grid">
     <div class="footer-col"><a href="index.html" class="footer-logo"><img src="assets/images/Logo_Bautrocknung.png" alt="Bautrocknung Paderborn GmbH" class="footer-logo__img"></a><p class="footer-tagline">Professionelle Bautrocknung und Wasserschadenbeseitigung in Paderborn und OWL.</p></div>
     <div class="footer-col"><h3 class="footer-col__title">Leistungen</h3><ul class="footer-nav-list" role="list"><li><a href="wasserschaden.html" class="footer-nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Wasserschaden</a></li><li><a href="bautrocknung.html" class="footer-nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Bautrocknung</a></li><li><a href="leckageortung.html" class="footer-nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Leckageortung</a></li><li><a href="vermietung.html" class="footer-nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Ger&auml;tevermietung</a></li><li><a href="schadstoffsanierung.html" class="footer-nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>Schadstoffsanierung</a></li></ul></div>
-    <div class="footer-col"><h3 class="footer-col__title">Kontakt</h3><ul class="footer-contact-list" role="list"><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Stettiner Str. 1<br>32756 Detmold</span></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 5.94 5.94l1.98-1.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+49523150083876">05231 50083876</a></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:schaden@teutoplus.de">schaden@teutoplus.de</a></li></ul></div>
+    <div class="footer-col"><h3 class="footer-col__title">Kontakt</h3><ul class="footer-contact-list" role="list"><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Milanweg 15<br>33100 Paderborn</span></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 5.94 5.94l1.98-1.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+49523150083876">05231 50083876</a></li><li class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:schaden@teutoplus.de">schaden@teutoplus.de</a></li></ul></div>
     <div class="footer-col"><h3 class="footer-col__title">Erreichbarkeit</h3><div class="footer-hours"><div class="footer-hours-row"><span><strong>Mo &ndash; Do</strong></span><span>08:00 &ndash; 18:00 Uhr</span></div><div class="footer-hours-row"><span><strong>Freitag</strong></span><span>08:00 &ndash; 15:00 Uhr</span></div><div class="footer-hours-row"><span><strong>Sa &amp; So</strong></span><span>Geschlossen</span></div></div><div class="footer-badge-24" style="margin-top:var(--space-5);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 5.94 5.94l1.98-1.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+49523150083876" style="color:inherit;text-decoration:none;">05231 50083876</a></div></div>
   </div></div></div>
   <div class="footer-bottom"><div class="container"><div class="footer-bottom__inner"><p class="footer-bottom__copy">&copy; <span id="footer-year"></span> Bautrocknung Paderborn GmbH. Alle Rechte vorbehalten.</p><nav class="footer-bottom__links" aria-label="Rechtliche Links"><a href="impressum.html" class="footer-bottom__link">Impressum</a><a href="datenschutz.html" class="footer-bottom__link">Datenschutz</a></nav><div class="footer-bottom__credit"><a href="https://www.solventa-digital.de" target="_blank" rel="noopener noreferrer"><img src="assets/images/solventa_logo_klein.png" alt="Solventa Digital Solutions"><span>Erstellt von Solventa Digital Solutions</span></a></div></div></div></div>
@@ -231,21 +233,6 @@
 
 <div class="cookie-banner" id="cookie-banner" hidden role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc"><div class="container"><div class="cookie-banner__inner"><div class="cookie-banner__text"><p class="cookie-banner__title" id="cookie-title">Datenschutz-Einstellungen</p><p class="cookie-banner__desc" id="cookie-desc">Wir verwenden ausschlie&szlig;lich technisch notwendige Cookies. Weitere Informationen in unserer <a href="datenschutz.html">Datenschutzerkl&auml;rung</a>.</p></div><div class="cookie-banner__actions"><button class="cookie-banner__btn-decline" id="cookie-decline" type="button">Nur notwendige</button><button class="cookie-banner__btn-accept" id="cookie-accept" type="button">Verstanden</button></div></div></div></div>
 
-<!-- ================================================================
-     EmailJS – E-Mail-Versand direkt aus dem Browser (kein Backend nötig)
-     Anleitung: https://www.emailjs.com/docs/
-     1. Konto anlegen auf emailjs.com
-     2. E-Mail-Service verbinden (z. B. Gmail, SMTP) → Service ID notieren
-     3. E-Mail-Template erstellen → Template ID notieren
-     4. Public Key kopieren (Account → API Keys)
-     5. Die drei Werte unten eintragen
-     ================================================================ -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  // ▼▼▼ HIER EINTRAGEN – EmailJS Public Key (Account → API Keys) ▼▼▼
-  emailjs.init('DEIN_PUBLIC_KEY_HIER_EINTRAGEN');
-  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-</script>
 <script src="js/main.js"></script>
 <script>var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();</script>
 </body>
