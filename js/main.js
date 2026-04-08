@@ -287,13 +287,6 @@
         return;
       }
 
-      // ── EmailJS Konfiguration ─────────────────────────────────────────────
-      // ▼▼▼ HIER EINTRAGEN ▼▼▼
-      var EMAILJS_SERVICE_ID  = 'DEIN_SERVICE_ID_HIER_EINTRAGEN';   // EmailJS → Email Services → Service ID
-      var EMAILJS_TEMPLATE_ID = 'DEIN_TEMPLATE_ID_HIER_EINTRAGEN';  // EmailJS → Email Templates → Template ID
-      // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-      // ─────────────────────────────────────────────────────────────────────
-
       // Submit-Button in Ladezustand versetzen
       var submitBtn = form.querySelector('[type="submit"]');
       var originalBtnHTML = submitBtn ? submitBtn.innerHTML : null;
@@ -303,9 +296,11 @@
       }
       if (statusEl) { statusEl.className = 'form-status'; statusEl.textContent = ''; }
 
-      // E-Mail via EmailJS absenden
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-        .then(function () {
+      // Formulardaten an mail.php senden (PHP-Backend, kein Drittanbieter)
+      fetch('mail.php', { method: 'POST', body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.success) throw new Error(data.message || 'Fehler beim Senden.');
           // Erfolgsmeldung
           if (statusEl) {
             statusEl.className = 'form-status form-status--success is-visible';
@@ -332,10 +327,11 @@
           // Fehlermeldung
           if (statusEl) {
             statusEl.className = 'form-status form-status--error is-visible';
-            statusEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an: 05231 9883005';
+            statusEl.textContent = (error && error.message && error.message !== 'Failed to fetch')
+              ? error.message
+              : 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an: 05231 50083876';
           }
           if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
-          console.error('EmailJS Fehler:', error);
         });
     });
   }
