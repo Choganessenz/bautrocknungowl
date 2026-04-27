@@ -329,7 +329,7 @@
             statusEl.className = 'form-status form-status--error is-visible';
             statusEl.textContent = (error && error.message && error.message !== 'Failed to fetch')
               ? error.message
-              : 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an: 05231 50083876';
+              : 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an: 05251 7091421';
           }
           if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
         });

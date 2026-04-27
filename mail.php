@@ -115,6 +115,6 @@ if ($sent) {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Die E-Mail konnte nicht gesendet werden. Bitte rufen Sie uns direkt an: 05231 50083876',
+        'message' => 'Die E-Mail konnte nicht gesendet werden. Bitte rufen Sie uns direkt an: 05251 7091421',
     ]);
 }
