@@ -464,45 +464,7 @@
 
 
   /* =========================================================================
-     8. initGoogleRating – Lädt Bewertungsdaten aus google-rating.json
-     Die JSON-Datei wird täglich per Cron-Job aktualisiert:
-       Schritt 1: Google Cloud Console → Places API aktivieren
-       Schritt 2: Place ID ermitteln (maps.google.com → Ihr Unternehmen → "Place ID kopieren")
-       Schritt 3: Cron-Job einrichten (täglich), z. B.:
-         curl "https://maps.googleapis.com/maps/api/place/details/json
-               ?place_id=IHRE_PLACE_ID
-               &fields=rating,user_ratings_total
-               &key=IHR_API_KEY" \
-         | python3 -c "
-             import json,sys,datetime
-             d=json.load(sys.stdin)['result']
-             print(json.dumps({'rating':d['rating'],'total':d['user_ratings_total'],
-                               'updated':str(datetime.date.today())}))" \
-         > /pfad/zur/website/google-rating.json
-     ========================================================================= */
-  function initGoogleRating() {
-    var badge    = document.getElementById('google-rating');
-    if (!badge) return;
-
-    var scoreEl = badge.querySelector('.google-rating__score');
-    var starsEl = badge.querySelector('.google-rating__stars');
-    var countEl = document.getElementById('g-rating-count');
-
-    fetch('api/google-rating.php')
-      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (d) {
-        if (!d || !d.rating) return;
-        var rating = parseFloat(d.rating);
-        if (scoreEl) scoreEl.textContent = rating.toFixed(1);
-        if (starsEl) starsEl.style.setProperty('--fill', (rating / 5 * 100).toFixed(1) + '%');
-        if (countEl && d.total != null) countEl.textContent = d.total;
-      })
-      .catch(function () { /* JSON nicht vorhanden – Fallback-Werte im HTML bleiben */ });
-  }
-
-
-  /* =========================================================================
-     9. initAnchorScroll
+     8. initAnchorScroll
      ========================================================================= */
   function initAnchorScroll() {
     $$('a[href^="#"]').forEach(function (link) {
@@ -613,7 +575,6 @@
     initContactForm();
     initContactPreselect();
     initServicesCarousel();
-    initGoogleRating();
     initAnchorScroll();
     initScrollReveal();
   });

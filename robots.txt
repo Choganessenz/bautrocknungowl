@@ -3,4 +3,4 @@ Allow: /
 Disallow: /datenschutz
 Disallow: /impressum
 
-Sitemap: https://www.bautrocknung-paderborn.de/sitemap.xml
+Sitemap: https://www.bautrocknung-pb.com/sitemap.xml
